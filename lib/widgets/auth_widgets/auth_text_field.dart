@@ -14,7 +14,7 @@ class AuthTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,17 +23,26 @@ class AuthTextField extends StatelessWidget {
             textAlign: TextAlign.start,
             style: TextStyle(
               fontSize: 14,
-              color: Colors.grey.shade800
+              color: Colors.grey.shade600
             ),
           ),
           TextField(
             controller: controller,
             decoration: InputDecoration(
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffE7E8EA)), // Default (unfocused) border color
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black), // Border color when focused
+              ),
+              errorBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.red), // When error
+              ),
               hint: Text(hint,
                 style: TextStyle(
-                  color: Colors.grey.shade800,
+                  color: Colors.grey.shade600,
                   fontWeight: FontWeight.w500,
-                  fontSize: 17
+                  fontSize: 17,
                 ),
                  ),
             ),

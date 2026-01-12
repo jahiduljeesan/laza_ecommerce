@@ -29,67 +29,55 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      height: 45,
-                      width: 45,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: LazaColors.lightWhite,
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 45,
+                        width: 45,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: LazaColors.lightWhite,
+                        ),
+                        child: Image.asset('assets/icons/arrow_back.png'),
                       ),
-                      child: Image.asset('assets/icons/arrow_back.png'),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
-              TitleText(text: 'Sign up '),
+              const SizedBox(height: 20,),
+              TitleText(text: 'Sign up ', ),
             ],
           ),
 
           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               AuthTextField(
                 title: 'Username',
                 hint: 'eg. Abdul Karim',
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 12,),
 
               AuthTextField(
                 title: 'Password',
                 hint: 'eg. 123456',
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 12,),
 
               AuthTextField(
                 title: 'Username',
                 hint: 'Edward Camavinga',
               ),
-              const SizedBox(height: 10,),
 
-              TextButton(
-                  onPressed: (){},
-                  child: Text(
-                    'Forgot Password?',
-                    textAlign: TextAlign.end,
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 17,
-                    ),
-                  )
-              ),
-
-              const SizedBox(height: 10,),
+              const SizedBox(height: 30,),
 
               RememberSwitch(
                 value: _rememberMe,
                 onChanged: (val) => setState(() => _rememberMe = val),
-              ),
+              )
             ],
           ),
 
-          const SizedBox(height: 60,),
           BottomButton(
             label: 'Sign up',
             onTap: () {},

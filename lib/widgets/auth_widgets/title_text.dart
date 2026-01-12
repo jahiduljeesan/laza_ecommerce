@@ -9,7 +9,7 @@ class TitleText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: FontWeight.w700,
       ),
       textAlign: TextAlign.center,
