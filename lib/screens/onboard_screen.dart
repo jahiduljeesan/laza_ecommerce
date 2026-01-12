@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:laza_ecommerce/screens/get_start_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
+import 'package:laza_ecommerce/widgets/auth_widgets/subtitle_text.dart';
+import 'package:laza_ecommerce/widgets/auth_widgets/title_text.dart';
 
 class OnboardScreen extends StatefulWidget {
   const OnboardScreen({super.key});
@@ -9,7 +12,6 @@ class OnboardScreen extends StatefulWidget {
 }
 
 class _OnboardScreenState extends State<OnboardScreen> {
-
   int selected = 0;
 
   @override
@@ -58,23 +60,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text(
-                        "Look Good, Feel Good",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
+                      TitleText(text: 'Look Good, Feel Good'),
                       const SizedBox(height: 8),
-                      Text(
-                        "Create your individual & unique style and\nlook amazing everyday.",
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.black.withOpacity(0.55),
-                          height: 1.35,
-                        ),
-                        textAlign: TextAlign.center,
+                      SubtitleText(
+                        text:
+                            "Create your individual & unique style and\nlook amazing everyday.",
                       ),
                       const SizedBox(height: 16),
 
@@ -84,7 +74,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                             child: _PillButton(
                               label: 'Male',
                               selected: selected == 0,
-                              onTap: () => setState(() => selected = 0 ),
+                              onTap: () => setState(() => selected = 0),
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -97,8 +87,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10,),
-                      TextButton(onPressed: (){}, child: Text('Skip'))
+                      const SizedBox(height: 10),
+                      TextButton(
+                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => GetStartScreen())),
+                        child: Text('Skip'),
+                      ),
                     ],
                   ),
                 ),
