@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:laza_ecommerce/screens/onboard_screen.dart';
+import 'package:laza_ecommerce/screens/auth/onboard_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -1,12 +1,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:laza_ecommerce/screens/navigation/main_screen.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/auth_text_field.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/bottom_button.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/remember_switch.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/subtitle_text.dart';
 
-import '../values/laza_colors.dart';
-import '../widgets/auth_widgets/title_text.dart';
+import '../../values/laza_colors.dart';
+import '../../widgets/auth_widgets/title_text.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -47,8 +48,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
-              const SizedBox(height: 10),
+
+              const SizedBox(height: 20),
               TitleText(text: 'Welcome'),
               SubtitleText(text: 'Please enter your data to continue'),
             ],
@@ -96,7 +97,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             'By connecting your account confirm that you agree with our ',
                       ),
                       TextSpan(
-                        text: 'Term and Condition',
+                        text: 'Terms and Conditions',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: LazaColors.primaryColor,
@@ -107,8 +108,10 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
               ),
-
-              BottomButton(label: 'Sign in', onTap: () {}),
+              const SizedBox(height: 10,),
+              BottomButton(label: 'Sign in', onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => MainScreen()));
+              }),
             ],
           ),
         ],

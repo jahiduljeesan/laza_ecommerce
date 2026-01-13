@@ -3,8 +3,8 @@ import 'package:laza_ecommerce/widgets/auth_widgets/auth_text_field.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/bottom_button.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/remember_switch.dart';
 
-import '../values/laza_colors.dart';
-import '../widgets/auth_widgets/title_text.dart';
+import '../../values/laza_colors.dart';
+import '../../widgets/auth_widgets/title_text.dart';
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
 

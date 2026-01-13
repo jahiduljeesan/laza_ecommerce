@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laza_ecommerce/screens/splash_screen.dart';
+import 'package:laza_ecommerce/screens/auth/splash_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
 
 void main() {

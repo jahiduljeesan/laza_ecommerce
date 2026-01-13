@@ -9,7 +9,7 @@ class SubtitleText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 15,
+        fontSize: 16,
         color: Colors.black.withOpacity(0.55),
         height: 1.35,
       ),
