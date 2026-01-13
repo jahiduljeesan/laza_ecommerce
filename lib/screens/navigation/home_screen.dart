@@ -71,7 +71,38 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 15,),
-
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffF5F6FA)
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hint: Text('Search',style: TextStyle(color: Colors.grey.shade600),),
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.all(15),
+                          prefixIcon: Icon(Icons.search,color: LazaColors.gray,)
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10,),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: LazaColors.primaryColor,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Icon(Icons.filter_list,color: Colors.white,),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
