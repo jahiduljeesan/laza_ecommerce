@@ -10,7 +10,7 @@ class ApiProvider extends ChangeNotifier{
 
   bool isLoading = false;
 
-  Future<void> getProducts() async{
+  Future<void> loadProduct() async{
     isLoading = true;
     notifyListeners();
 
@@ -18,5 +18,7 @@ class ApiProvider extends ChangeNotifier{
       isLoading = false;
       notifyListeners();
     });
+
+    debugPrint('Product List Check ${_products.length} ');
   }
 }

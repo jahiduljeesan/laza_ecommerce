@@ -1,8 +1,8 @@
 class Product {
-  final String id;
-  final String title;
-  final String category;
-  final String imagePath;
+  final int? id;
+  final String? title;
+  final String? category;
+  final String? imagePath;
 
   Product({
     required this.id,
@@ -12,8 +12,11 @@ class Product {
 });
 
   factory Product.fromJson(Map<String,dynamic> json){
-    return Product(id: json['id'], title: json['title'],
-        category: json['category'], imagePath: json['imagePath']);
+    return Product(id: json['id'] as int?
+        , title: json['title'] as String?,
+        category: json['category'] as String?
+        , imagePath: json['imagePath'] as String?
+    );
   }
 
 }
