@@ -16,24 +16,26 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBarDoubleBullet(
-        color: LazaColors.primaryColor,
-        selectedIndex: _index,
-        items: [
-          BottomBarItem(
-              iconBuilder: (color) => Image.asset('assets/icons/ic_menu.png', color: color, height: 30, width: 30),
-              label: 'Home'
-          ),
-          BottomBarItem(
-              iconBuilder: (color) => Image.asset('assets/icons/ic_bag.png', color: color, height: 30, width: 30),
-          label: 'Cart'
-          ),
-        ],
-        onSelect: (index) {
-          setState(() {
-            _index = index;
-          });
-        },
+      bottomNavigationBar: SafeArea(
+        child: BottomBarDoubleBullet(
+          color: LazaColors.primaryColor,
+          selectedIndex: _index,
+          items: [
+            BottomBarItem(
+                iconBuilder: (color) => Image.asset('assets/icons/ic_menu.png', color: color, height: 30, width: 30),
+                label: 'Home'
+            ),
+            BottomBarItem(
+                iconBuilder: (color) => Image.asset('assets/icons/ic_bag.png', color: color, height: 30, width: 30),
+            label: 'Cart'
+            ),
+          ],
+          onSelect: (index) {
+            setState(() {
+              _index = index;
+            });
+          },
+        ),
       ),
       body: _index == 1 ? CartScreen() : HomeScreen(),
     );
