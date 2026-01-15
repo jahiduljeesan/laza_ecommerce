@@ -1,6 +1,7 @@
   import 'package:flutter/material.dart';
   import 'package:laza_ecommerce/models/product.dart';
   import 'package:laza_ecommerce/providers/api_provider.dart';
+import 'package:laza_ecommerce/screens/navigation/new_arrival_screen.dart';
   import 'package:laza_ecommerce/widgets/auth_widgets/subtitle_text.dart';
   import 'package:laza_ecommerce/widgets/auth_widgets/title_text.dart';
   import 'package:laza_ecommerce/widgets/styles/product_style.dart';
@@ -122,7 +123,7 @@
                 ),
 
                 const SizedBox(height: 15,),
-                _categoryText(title: 'New Arrivals',),
+                _categoryText(title: 'New Arrivals', products: productProvider.products),
                 const SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -152,7 +153,7 @@
       );
     }
 
-    Padding _categoryText({required String title}) {
+    Padding _categoryText({required String title,required List<Product> products}) {
       return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -166,7 +167,9 @@
                       ),
                     ),
                     TextButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => NewArrivalScreen(products: products,) ),);
+                      },
                       child: Text(
                         'See more',
                         style: TextStyle(
