@@ -2,6 +2,7 @@
   import 'package:laza_ecommerce/models/product.dart';
   import 'package:laza_ecommerce/providers/api_provider.dart';
 import 'package:laza_ecommerce/screens/navigation/new_arrival_screen.dart';
+import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
   import 'package:laza_ecommerce/widgets/auth_widgets/subtitle_text.dart';
   import 'package:laza_ecommerce/widgets/auth_widgets/title_text.dart';
   import 'package:laza_ecommerce/widgets/styles/product_style.dart';
@@ -65,7 +66,7 @@ import 'package:laza_ecommerce/screens/navigation/new_arrival_screen.dart';
                             shape: BoxShape.circle,
                             color: LazaColors.lightWhite,
                           ),
-                          child: Image.asset('assets/icons/ic_bag.png',color: Colors.grey.shade600,),
+                          child: Image.asset('assets/icons/ic_heart.png',color: Colors.grey.shade600,),
                         ),
                       ),
                     ],
@@ -141,7 +142,10 @@ import 'package:laza_ecommerce/screens/navigation/new_arrival_screen.dart';
                       Product product = productProvider.products[index];
                       return ProductStyle(
                         product: product,
-
+                        onTap: () => Navigator.push(context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailScreen(productId: product.id ?? 0 ,),
+                            )),
                       );
                     },
                   ),

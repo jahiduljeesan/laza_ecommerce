@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laza_ecommerce/models/product.dart';
+import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
 import 'package:laza_ecommerce/widgets/styles/product_style.dart';
 class NewArrivalScreen extends StatefulWidget {
 
@@ -29,7 +30,11 @@ class _NewArrivalScreenState extends State<NewArrivalScreen> {
             childAspectRatio: .59,
           ),
           itemBuilder: (context,index) {
-            return ProductStyle(product: widget.products[index],);
+            return ProductStyle(product: widget.products[index],
+              onTap: () => Navigator.push(context, MaterialPageRoute(
+                builder: (_) => ProductDetailScreen(productId:  widget.products[index].id ?? 0 ,),
+              )),
+            );
           }
       ),
     );
