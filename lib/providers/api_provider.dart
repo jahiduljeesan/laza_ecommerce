@@ -14,7 +14,7 @@ class ApiProvider extends ChangeNotifier{
     isLoading = true;
     notifyListeners();
 
-    _products = await _apiService.getProduct().whenComplete(() {
+    _products = await _apiService.getProducts().whenComplete(() {
       isLoading = false;
       notifyListeners();
     });
