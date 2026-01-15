@@ -121,7 +121,7 @@
                   ),
                 ),
 
-                const SizedBox(height: 10,),
+                const SizedBox(height: 15,),
                 _categoryText(title: 'New Arrivals',),
                 const SizedBox(height: 10,),
                 Padding(
@@ -133,14 +133,14 @@
                     itemCount: productProvider.products.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        childAspectRatio: 1
+                        crossAxisSpacing: 12,
+                        childAspectRatio: .59
                       ),
                     itemBuilder: (context,index){
                       Product product = productProvider.products[index];
                       return ProductStyle(
                         product: product,
+
                       );
                     },
                   ),
