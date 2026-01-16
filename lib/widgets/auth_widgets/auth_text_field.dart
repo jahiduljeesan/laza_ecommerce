@@ -9,7 +9,7 @@ class AuthTextField extends StatelessWidget {
     required this.title,
      required this.hint,
      this.controller
-});
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class AuthTextField extends StatelessWidget {
               color: Colors.grey.shade600
             ),
           ),
+          //delete able comment
           TextField(
             controller: controller,
             decoration: InputDecoration(

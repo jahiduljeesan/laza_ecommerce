@@ -29,7 +29,7 @@ class ToTextButton extends StatelessWidget {
               style: TextStyle(
                 fontSize: 17,
                 color: Colors.black,
-                decoration: TextDecoration.underline
+                decoration: TextDecoration.underline,
               ),
             )
         )
