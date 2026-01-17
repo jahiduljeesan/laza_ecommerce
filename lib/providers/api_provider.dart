@@ -8,9 +8,12 @@ class ApiProvider extends ChangeNotifier{
   List<Product> _products = [];
   List<Product> get products  => _products;
 
+  Product? _product;
+  Product? get product  => _product;
+
   bool isLoading = false;
 
-  Future<void> loadProduct() async{
+  Future<void> loadProducts() async{
     debugPrint('Product List Check ${_products.length} ');
     isLoading = true;
     notifyListeners();
@@ -20,9 +23,19 @@ class ApiProvider extends ChangeNotifier{
       debugPrint('Product List Check ${_products.length} ');
       notifyListeners();
     });
+  }
 
-    debugPrint('Product List Check ${_products.length} ');
+  Future<void> loadProductById(int id) async {
+    isLoading = true;
+    notifyListeners();
+    _product = await _apiService.getProductById(id).whenComplete(() {
+      isLoading = false;
+      notifyListeners();
+    });
+  }
 
-
+  void clearProduct() {
+    _product = null;
+    notifyListeners();
   }
 }

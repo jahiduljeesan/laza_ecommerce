@@ -7,6 +7,7 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
   import 'package:laza_ecommerce/widgets/auth_widgets/title_text.dart';
   import 'package:laza_ecommerce/widgets/styles/product_style.dart';
   import 'package:provider/provider.dart';
+  import 'package:skeletonizer/skeletonizer.dart';
 
   import '../../values/laza_colors.dart';
   class HomeScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
     @override
     void initState() {
       WidgetsBinding.instance.addPostFrameCallback((_){
-        Provider.of<ApiProvider>(context,listen: false).loadProduct();
+        Provider.of<ApiProvider>(context,listen: false).loadProducts();
         debugPrint('State initialized');
       });
       super.initState();
@@ -129,26 +130,30 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
                 const SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: GridView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: productProvider.products.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        childAspectRatio: .59
-                      ),
-                    itemBuilder: (context,index){
-                      Product product = productProvider.products[index];
-                      return ProductStyle(
-                        product: product,
-                        onTap: () => Navigator.push(context,
-                            MaterialPageRoute(
-                              builder: (_) => ProductDetailScreen(productId: product.id ?? 0 ,),
-                            )),
-                      );
-                    },
+                  child: Skeletonizer(
+                    enabled: productProvider.isLoading,
+                    enableSwitchAnimation: true,
+                    child: GridView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: productProvider.products.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                          crossAxisSpacing: 12,
+                          childAspectRatio: .59
+                        ),
+                      itemBuilder: (context,index){
+                        Product product = productProvider.products[index];
+                        return ProductStyle(
+                          product: product,
+                          onTap: () => Navigator.push(context,
+                              MaterialPageRoute(
+                                builder: (_) => ProductDetailScreen(productId: product.id ?? 0 ,),
+                              )),
+                        );
+                      },
+                    ),
                   ),
                 )
               ],
