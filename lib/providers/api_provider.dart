@@ -11,11 +11,13 @@ class ApiProvider extends ChangeNotifier{
   bool isLoading = false;
 
   Future<void> loadProduct() async{
+    debugPrint('Product List Check ${_products.length} ');
     isLoading = true;
     notifyListeners();
 
     _products = await _apiService.getProducts().whenComplete(() {
       isLoading = false;
+      debugPrint('Product List Check ${_products.length} ');
       notifyListeners();
     });
 

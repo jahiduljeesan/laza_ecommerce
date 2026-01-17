@@ -26,7 +26,6 @@ class AuthTextField extends StatelessWidget {
               color: Colors.grey.shade600
             ),
           ),
-          //delete able comment s
           TextField(
             controller: controller,
             decoration: InputDecoration(

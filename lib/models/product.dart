@@ -30,7 +30,8 @@ class Product {
         , imagePath: json['image'] as String?,
       price: priceDouble,
       rating: json['rating'] != null
-        ? json['rating'] : null
+        ? Rating.fromJson(json['rating'])
+          : null
     );
   }
 

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:laza_ecommerce/models/product.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,7 +21,7 @@ class ApiService {
 
   Future<Product> getProductById(int id) async {
     final response = await http.get(Uri.parse('$BASE_URL/products/$id'));
-
+    debugPrint("response check ${response.statusCode}");
     if(response.statusCode == 200) {
       final data = jsonDecode(response.body);
       return Product.fromJson(data);

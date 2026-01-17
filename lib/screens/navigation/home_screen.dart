@@ -21,6 +21,7 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
     void initState() {
       WidgetsBinding.instance.addPostFrameCallback((_){
         Provider.of<ApiProvider>(context,listen: false).loadProduct();
+        debugPrint('State initialized');
       });
       super.initState();
     }
