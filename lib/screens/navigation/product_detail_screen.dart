@@ -4,8 +4,6 @@ import 'package:laza_ecommerce/providers/api_provider.dart';
 import 'package:laza_ecommerce/screens/navigation/cart_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/bottom_button.dart';
-import 'package:laza_ecommerce/widgets/auth_widgets/subtitle_text.dart';
-import 'package:laza_ecommerce/widgets/auth_widgets/title_text.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -41,12 +39,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          // ====== SCROLLABLE CONTENT ======
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  // IMAGE + HEADER ICONS
                   Stack(
                     children: [
                       Container(
@@ -114,7 +110,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ],
                   ),
 
-                  // TITLE & PRICE
                   Skeletonizer(
                     enabled: provider.isLoading,
                     enableSwitchAnimation: true,

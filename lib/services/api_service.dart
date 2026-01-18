@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:laza_ecommerce/models/product.dart';
@@ -29,4 +28,6 @@ class ApiService {
       throw Exception('Failed to load data by id');
     }
   }
+
+
 }
