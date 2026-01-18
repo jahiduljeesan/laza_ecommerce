@@ -4,6 +4,7 @@ class Product {
   final int? id;
   final String? title;
   final String? category;
+  final String? description;
   final String? imagePath;
   final double? price;
   final Rating? rating;
@@ -12,6 +13,7 @@ class Product {
     this.id,
     this.title,
     this.category,
+    this.description,
     this.imagePath,
     this.price,
     this.rating
@@ -26,7 +28,8 @@ class Product {
 
     return Product(id: json['id'] as int?
         , title: json['title'] as String?,
-        category: json['category'] as String?
+        category: json['category'] as String?,
+        description: json['description'] as String
         , imagePath: json['image'] as String?,
       price: priceDouble,
       rating: json['rating'] != null

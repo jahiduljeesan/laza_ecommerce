@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -10,9 +11,11 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Cart Page'
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Cart Page'
+        ),
       ),
     );
   }

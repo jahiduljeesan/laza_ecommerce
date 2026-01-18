@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.2
   cached_network_image: ^3.3.1
   skeletonizer: ^2.1.2
+  expandable_text: 2.3.0
 
 dev_dependencies:
   flutter_test:
