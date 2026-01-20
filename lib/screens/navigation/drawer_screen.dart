@@ -13,7 +13,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 100),
+      padding: const EdgeInsets.only(right: 20,left: 20,top: 100,bottom: 30),
       child: Column(
         children: [
           Row(
@@ -114,11 +114,53 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
           SizedBox(height: size.height * .03,),
 
+          Column(
+            children: [
+              _drawerButton(
+                  size,
+                  icon: Icons.light_mode_outlined,
+                  label: 'Dark Mode'
+              ),
+              _drawerButton(
+                  size,
+                  icon: Icons.light_mode_outlined,
+                  label: 'Dark Mode'
+              ),
+
+              _drawerButton(
+                  size,
+                  icon: Icons.light_mode_outlined,
+                  label: 'Dark Mode'
+              ),
+
+              _drawerButton(
+                  size,
+                  icon: Icons.light_mode_outlined,
+                  label: 'Dark Mode'
+              ),
+              _drawerButton(
+                  size,
+                  icon: Icons.light_mode_outlined,
+                  label: 'Dark Mode'
+              ),
+              _drawerButton(
+                  size,
+                  icon: Icons.light_mode_outlined,
+                  label: 'Dark Mode'
+              ),
+              _drawerButton(
+                  size,
+                  icon: Icons.light_mode_outlined,
+                  label: 'Dark Mode'
+              ),
+            ],
+          ),
+
           _drawerButton(
               size,
               icon: Icons.light_mode_outlined,
               label: 'Dark Mode'
-          )
+          ),
         ],
       ),
     );
