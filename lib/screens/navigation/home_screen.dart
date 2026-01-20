@@ -10,6 +10,7 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
   import 'package:skeletonizer/skeletonizer.dart';
 
   import '../../values/laza_colors.dart';
+import 'drawer_screen.dart';
   class HomeScreen extends StatefulWidget {
     const HomeScreen({super.key});
 
@@ -35,6 +36,10 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           backgroundColor: Colors.white,
+          drawer: Drawer(
+            backgroundColor: Colors.white,
+            child: DrawerScreen(),
+          ),
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -44,18 +49,22 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: 45,
-                          width: 45,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: LazaColors.lightWhite,
-                          ),
-                          child: Image.asset('assets/icons/ic_menu.png',color: Colors.grey.shade600,),
-                        ),
+                      Builder(
+                        builder: (context) {
+                          return InkWell(
+                            onTap: () => Scaffold.of(context).openDrawer(),
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 45,
+                              width: 45,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: LazaColors.lightWhite,
+                              ),
+                              child: Image.asset('assets/icons/ic_menu.png',color: Colors.grey.shade600,),
+                            ),
+                          );
+                        }
                       ),
 
                       InkWell(
