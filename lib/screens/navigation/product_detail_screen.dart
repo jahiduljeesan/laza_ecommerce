@@ -4,6 +4,7 @@ import 'package:laza_ecommerce/providers/api_provider.dart';
 import 'package:laza_ecommerce/screens/navigation/cart_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/bottom_button.dart';
+import 'package:laza_ecommerce/widgets/styles/product_review_style.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -174,12 +175,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             maxLines: 3,
                             linkColor: Colors.blue,
                             style: const TextStyle(
-                              fontSize: 14,
+                              fontSize: 16,
                               color: Colors.grey,
                               height: 1.4,
                             ),
                             animation: true,
                           ),
+
+                          const SizedBox(height: 10,),
+                          _categoryText(title: 'Reviews', products: null),
+                          ProductReviewStyle(review:product?.reviews.first,)
                         ],
                       ),
                     ),
@@ -239,6 +244,36 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Padding _categoryText({required String title,required List<dynamic>? products}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600
+            ),
+          ),
+          TextButton(
+            onPressed: (){
+            },
+            child: Text(
+              'See more',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: LazaColors.gray
+              ),
+            ),
+          )
         ],
       ),
     );
