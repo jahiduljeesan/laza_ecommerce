@@ -33,7 +33,7 @@ class ProductStyle extends StatelessWidget {
                           child: SizedBox(
                             height: 200,
                             child: CachedNetworkImage(
-                              imageUrl: product?.imagePath ?? '',
+                              imageUrl: product?.images.first ?? '',
                             ),
                           ),
                         ),

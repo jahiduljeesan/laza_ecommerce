@@ -23,19 +23,22 @@ class _DrawerScreenState extends State<DrawerScreen> {
               SafeArea(
                 child: Builder(
                     builder: (context) {
-                      return InkWell(
-                        onTap: () => Scaffold.of(context).closeDrawer(),
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: 45,
-                          width: 45,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: LazaColors.lightWhite,
-                          ),
-                          child: RotatedBox(
-                            quarterTurns: 1,
-                              child: Image.asset('assets/icons/ic_menu.png',color: Colors.grey.shade600,)
+                      return Hero(
+                        tag: 'menu button',
+                        child: InkWell(
+                          onTap: () => Scaffold.of(context).closeDrawer(),
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 45,
+                            width: 45,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: LazaColors.lightWhite,
+                            ),
+                            child: RotatedBox(
+                              quarterTurns: 1,
+                                child: Image.asset('assets/icons/ic_menu.png',color: Colors.grey.shade600,)
+                            ),
                           ),
                         ),
                       );

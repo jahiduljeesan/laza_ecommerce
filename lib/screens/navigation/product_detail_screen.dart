@@ -52,7 +52,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: provider.isLoading
                             ? const Center(child: CircularProgressIndicator())
                             : CachedNetworkImage(
-                          imageUrl: product?.imagePath ?? '',
+                          imageUrl: product?.images.first ?? '',
                           placeholder: (context, url) =>
                           const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>

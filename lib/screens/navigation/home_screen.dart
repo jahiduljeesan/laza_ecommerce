@@ -51,17 +51,20 @@ import 'drawer_screen.dart';
                     children: [
                       Builder(
                         builder: (context) {
-                          return InkWell(
-                            onTap: () => Scaffold.of(context).openDrawer(),
-                            child: Container(
-                              alignment: Alignment.center,
-                              height: 45,
-                              width: 45,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: LazaColors.lightWhite,
+                          return Hero(
+                            tag: 'menu button',
+                            child: InkWell(
+                              onTap: () => Scaffold.of(context).openDrawer(),
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 45,
+                                width: 45,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: LazaColors.lightWhite,
+                                ),
+                                child: Image.asset('assets/icons/ic_menu.png',color: Colors.grey.shade600,),
                               ),
-                              child: Image.asset('assets/icons/ic_menu.png',color: Colors.grey.shade600,),
                             ),
                           );
                         }

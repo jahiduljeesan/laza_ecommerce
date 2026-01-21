@@ -13,17 +13,22 @@ class ApiProvider extends ChangeNotifier{
 
   bool isLoading = false;
 
-  Future<void> loadProducts() async{
-    debugPrint('Product List Check ${_products.length} ');
+  Future<void> loadProducts() async {
     isLoading = true;
     notifyListeners();
 
-    _products = await _apiService.getProducts().whenComplete(() {
+    try {
+      _products = await _apiService.getProducts();
+      debugPrint("Loaded productsx: ${_products.length}");
+    } catch (e) {
+      debugPrint('Error loading products: $e');
+    } finally {
       isLoading = false;
-      debugPrint('Product List Check ${_products.length} ');
       notifyListeners();
-    });
+      debugPrint("Loaded productsx: ${_products.length}");
+    }
   }
+
 
   Future<void> loadProductById(int id) async {
     isLoading = true;
