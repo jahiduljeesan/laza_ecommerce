@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:laza_ecommerce/models/product.dart';
+import 'package:laza_ecommerce/models/review.dart';
 import 'package:laza_ecommerce/providers/api_provider.dart';
+import 'package:laza_ecommerce/screens/navigation/all_review_screen.dart';
 import 'package:laza_ecommerce/screens/navigation/cart_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/bottom_button.dart';
@@ -182,9 +185,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             animation: true,
                           ),
 
-                          const SizedBox(height: 10,),
-                          _categoryText(title: 'Reviews', products: null),
-                          ProductReviewStyle(review:product?.reviews.first,)
+                          SizedBox(height: size.height * .01,),
+                          _categoryText(title: 'Reviews', product: product),
+                          Skeletonizer(
+                            enabled: provider.isLoading,
+                            child: ListView.separated(
+                              shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context,index){
+                                   return product == null ? Center()
+                                       : ProductReviewStyle(review: product.reviews[index]);
+                                },
+                                separatorBuilder: (context,index){
+                                  return SizedBox(height: size.height * .01,);
+                                },
+                                itemCount: 2
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -249,7 +267,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  Padding _categoryText({required String title,required List<dynamic>? products}) {
+  Padding _categoryText({required String title,required Product? product}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Row(
@@ -264,6 +282,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
           TextButton(
             onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (_) =>
+                  AllReviewScreen(product: product,)
+              ));
             },
             child: Text(
               'See more',

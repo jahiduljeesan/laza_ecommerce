@@ -1,6 +1,5 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
-import 'package:laza_ecommerce/models/rating.dart';
 import 'package:laza_ecommerce/models/review.dart';
 
 class ProductReviewStyle extends StatelessWidget {
@@ -21,20 +20,30 @@ class ProductReviewStyle extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  review?.reviewerName ?? 'null',
-                  maxLines: 2,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black.withOpacity(.7),
-                  ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      size: 16,
+                      color: Colors.black.withOpacity(.6),
+                    ),
+                    SizedBox(width: size.width * .01),
+                    Text(
+                      review?.reviewerName ?? 'null',
+                      maxLines: 2,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black.withOpacity(.7),
+                      ),
+                    ),
+                  ],
                 ),
                 Row(
                   children: [
                     Icon(
                       Icons.calendar_month,
-                      size: 14,
+                      size: 16,
                       color: Colors.black.withOpacity(.6),
                     ),
                     SizedBox(width: size.width * .01),
@@ -42,8 +51,8 @@ class ProductReviewStyle extends StatelessWidget {
                       (review?.date ?? 'null').toString(),
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black.withOpacity(.7),
+                        fontSize: 12,
+                        color: Colors.black.withOpacity(.5),
                       ),
                     ),
                   ],
@@ -56,10 +65,10 @@ class ProductReviewStyle extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '4.5',
+                      (review?.rating ?? 0).toDouble().toString(),
                       maxLines: 2,
                       style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black.withOpacity(.8),
                       ),
@@ -69,7 +78,7 @@ class ProductReviewStyle extends StatelessWidget {
                       maxLines: 2,
                       style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                         color: Colors.black.withOpacity(.6),
                       ),
                     ),
@@ -103,6 +112,8 @@ class ProductReviewStyle extends StatelessWidget {
           ],
         ),
 
+
+        SizedBox(height: size.height * .01,),
         ExpandableText(
           review?.comment ?? 'No Comment',
           expandText: 'show more',
@@ -111,7 +122,7 @@ class ProductReviewStyle extends StatelessWidget {
           linkColor: Colors.blue,
           style: const TextStyle(
             fontSize: 16,
-            color: Colors.black54,
+            color: Colors.black87,
             height: 1.4,
           ),
           animation: true,
