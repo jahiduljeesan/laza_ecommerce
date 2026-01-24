@@ -10,6 +10,7 @@ import 'package:laza_ecommerce/screens/navigation/product_detail_screen.dart';
   import 'package:skeletonizer/skeletonizer.dart';
 
   import '../../values/laza_colors.dart';
+import '../../widgets/styles/category_style.dart';
 import 'drawer_screen.dart';
   class HomeScreen extends StatefulWidget {
     const HomeScreen({super.key});
@@ -138,6 +139,27 @@ import 'drawer_screen.dart';
                 ),
 
                 const SizedBox(height: 15,),
+                _categoryText(title: 'Popular Brands', products: []),
+                const SizedBox(height: 10,),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: SizedBox(
+                    height: 50,
+                    child: ListView.separated(
+                      itemCount: _categoryList().length,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context,index){
+                        return SizedBox(width: 10,);
+                      },
+                      itemBuilder: (context,index){
+                        return CategoryStyle(category: _categoryList()[index],);
+                      },
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 15,),
                 _categoryText(title: 'New Arrivals', products: productProvider.products),
                 const SizedBox(height: 10,),
                 Padding(
@@ -175,9 +197,18 @@ import 'drawer_screen.dart';
       );
     }
 
+    List<Map<String,String>> _categoryList() {
+      return [
+        {"Nike":"assets/temp_logos/logo_nike.png"},
+        {"Adidas":"assets/temp_logos/logo_adidas.png"},
+        {"Fila":"assets/temp_logos/logo_fila.png"},
+        {"Puma":"assets/temp_logos/logo_puma.png"},
+      ];
+    }
+
     Padding _categoryText({required String title,required List<Product> products}) {
       return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.only(left: 20,right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
