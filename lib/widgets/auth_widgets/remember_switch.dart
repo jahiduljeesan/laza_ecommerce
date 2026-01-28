@@ -31,6 +31,8 @@ class RememberSwitch extends StatelessWidget {
               activeThumbColor: Colors.white,
               inactiveTrackColor: Colors.white,
               inactiveThumbColor: Colors.green,
+              trackOutlineColor: WidgetStatePropertyAll(Colors.transparent),
+              trackOutlineWidth: WidgetStatePropertyAll(0.0),
             ),
           )
 

@@ -151,11 +151,28 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
               SizedBox(height: size.height * .03),
 
-              _drawerButton(
-                size,
-                icon: Icons.dark_mode_outlined,
-                label: 'Dark Mode',
-                onTap: () {},
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _drawerButton(
+                    size,
+                    icon: Icons.dark_mode_outlined,
+                    label: 'Dark Mode',
+                    onTap: () {},
+                  ),
+                  Switch(
+                      value: false,
+                      onChanged: (bol) {},
+                    activeTrackColor: LazaColors.primaryColor,
+                    activeThumbColor: Colors.white,
+                    inactiveTrackColor: Colors.white,
+                    inactiveThumbColor: Colors.grey,
+                    trackColor: WidgetStateProperty.resolveWith((states) =>
+                    states.contains(WidgetState.selected) ? Colors.green : Colors.grey[300]),
+                    trackOutlineColor: WidgetStatePropertyAll(Colors.transparent),
+                    trackOutlineWidth: WidgetStatePropertyAll(0.0),
+                  )
+                ],
               ),
 
               _drawerButton(

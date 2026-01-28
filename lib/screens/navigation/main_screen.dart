@@ -37,7 +37,13 @@ class _MainScreenState extends State<MainScreen> {
           },
         ),
       ),
-      body: _index == 1 ? CartScreen() : HomeScreen(),
+      body: IndexedStack(
+        index: _index,
+        children: [
+          const HomeScreen(),
+          const CartScreen(),
+        ],
+      )
     );
   }
 }
