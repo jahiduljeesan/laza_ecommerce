@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_bar_matu/bottom_bar_matu.dart';
+import 'package:laza_ecommerce/providers/api_provider.dart';
 import 'package:laza_ecommerce/screens/navigation/cart_screen.dart';
 import 'package:laza_ecommerce/screens/navigation/home_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
+import 'package:provider/provider.dart';
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -12,6 +14,14 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _index = 0;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      Provider.of<ApiProvider>(context,listen: false).loadProducts();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

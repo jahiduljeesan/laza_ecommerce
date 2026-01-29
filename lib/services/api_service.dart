@@ -42,7 +42,7 @@ class ApiService {
   }
 
 
-  Future<CartResponse> cartResponse(CartRequest cartRequest) async{
+  Future<CartResponse> getCart(CartRequest cartRequest) async{
     final uri = Uri.parse('$BASE_URL/carts/add');
 
     final response = await http.post(

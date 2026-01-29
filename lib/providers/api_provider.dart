@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:laza_ecommerce/models/cart/cart_request.dart';
 import 'package:laza_ecommerce/models/cart/cart_response.dart';
 import 'package:laza_ecommerce/models/product.dart';
 import 'package:laza_ecommerce/services/api_service.dart';
@@ -11,6 +12,9 @@ class ApiProvider extends ChangeNotifier{
 
   Product? _product;
   Product? get product  => _product;
+
+  CartResponse? _cartResponse;
+  CartResponse? get cartResponse => _cartResponse;
 
   bool isLoading = false;
 
@@ -40,6 +44,21 @@ class ApiProvider extends ChangeNotifier{
     });
   }
 
+  Future<void> loadAllCart(List<CartBody> cartsBodyList) async{
+    isLoading = true;
+    notifyListeners();
+
+    _cartResponse = await _apiService.getCart(
+      CartRequest(
+          userId: 1,
+          cartBodyList: cartsBodyList)
+    ).whenComplete((){
+      isLoading =false;
+      notifyListeners();
+    });
+
+
+  }
 
   void clearProduct() {
     _product = null;

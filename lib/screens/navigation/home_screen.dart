@@ -21,16 +21,6 @@ import 'drawer_screen.dart';
 
   class _HomeScreenState extends State<HomeScreen> {
     @override
-    void initState() {
-      WidgetsBinding.instance.addPostFrameCallback((_){
-        Provider.of<ApiProvider>(context,listen: false).loadProducts();
-        debugPrint('State initialized');
-      });
-      super.initState();
-    }
-
-
-    @override
     Widget build(BuildContext context) {
       final productProvider = Provider.of<ApiProvider>(context);
       return GestureDetector(
