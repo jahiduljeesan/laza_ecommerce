@@ -15,7 +15,7 @@ class _CartStyleState extends State<CartStyle> {
     return Container(
       height: 120,
       padding: EdgeInsets.all(8),
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),

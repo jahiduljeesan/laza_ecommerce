@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:laza_ecommerce/models/cart/cart_response.dart';
 import 'package:laza_ecommerce/models/product.dart';
 import 'package:laza_ecommerce/services/api_service.dart';
 
@@ -19,7 +20,7 @@ class ApiProvider extends ChangeNotifier{
 
     try {
       _products = await _apiService.getProducts();
-      debugPrint("Loaded productsx: ${_products.length}");
+      debugPrint("Loaded products: ${_products.length}");
     } catch (e) {
       debugPrint('Error loading products: $e');
     } finally {
@@ -38,6 +39,7 @@ class ApiProvider extends ChangeNotifier{
       notifyListeners();
     });
   }
+
 
   void clearProduct() {
     _product = null;

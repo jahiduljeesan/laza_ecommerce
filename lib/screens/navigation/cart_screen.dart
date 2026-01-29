@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/title_text.dart';
 import 'package:laza_ecommerce/widgets/styles/cart_style.dart';
 
-import '../../values/laza_colors.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});

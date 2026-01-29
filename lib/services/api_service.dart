@@ -1,6 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
+import 'package:laza_ecommerce/models/cart/cart_request.dart';
+import 'package:laza_ecommerce/models/cart/cart_response.dart';
 import 'package:laza_ecommerce/models/product.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,7 +9,7 @@ class ApiService {
   static const BASE_URL = "https://dummyjson.com";
 
   Future<List<Product>> getProducts() async {
-    final response = await http.get(Uri.parse('https://dummyjson.com/products'));
+    final response = await http.get(Uri.parse('$BASE_URL/products'));
 
     if (response.statusCode == 200) {
       final decoded = jsonDecode(response.body);
@@ -20,23 +21,18 @@ class ApiService {
         try {
           products.add(Product.fromJson(item));
         } catch (e) {
-          debugPrint('❌ Product parse error: $e');
+          debugPrint('Product parse error: $e');
         }
       }
 
-      debugPrint('✅ Parsed products: ${products.length}');
       return products;
     } else {
       throw Exception('Failed to load products');
     }
   }
 
-
-
-
   Future<Product> getProductById(int id) async {
     final response = await http.get(Uri.parse('$BASE_URL/products/$id'));
-    debugPrint("response check ${response.statusCode}");
     if(response.statusCode == 200) {
       final data = jsonDecode(response.body);
       return Product.fromJson(data);
@@ -46,4 +42,19 @@ class ApiService {
   }
 
 
+  Future<CartResponse> cartResponse(CartRequest cartRequest) async{
+    final uri = Uri.parse('$BASE_URL/carts/add');
+
+    final response = await http.post(
+      uri,
+      body: jsonEncode(cartRequest.toJson())
+    );
+
+    if(response.statusCode == 200 || response.statusCode == 201) {
+      final data = jsonDecode(response.body);
+      return CartResponse.fromJson(data);
+    } else {
+      throw Exception('Failed to load cart data');
+    }
+  }
 }
