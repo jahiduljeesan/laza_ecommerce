@@ -27,6 +27,8 @@ class ApiProvider extends ChangeNotifier{
       isLoading = false;
     } catch (e) {
       debugPrint('Error loading products: $e');
+    }finally{
+      notifyListeners();
     }
   }
 

@@ -14,6 +14,7 @@ class CartProvider extends ChangeNotifier {
 
   CartProvider() {
     _init();
+    loadData();
   }
 
   Future<void> _init() async{
@@ -34,6 +35,7 @@ class CartProvider extends ChangeNotifier {
       isLoading = false;
     } catch (e){
       debugPrint('e: $e');
+      isLoading = false;
     }
   }
 
