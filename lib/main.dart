@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:laza_ecommerce/models/cart/cart_request.dart';
 import 'package:laza_ecommerce/providers/api_provider.dart';
 import 'package:laza_ecommerce/screens/auth/splash_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';

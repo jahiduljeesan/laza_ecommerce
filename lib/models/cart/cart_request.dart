@@ -25,8 +25,8 @@ class CartRequest {
 }
 
 class CartBody {
-  final int id;
-  final int quantity;
+  int id;
+   int quantity;
 
   CartBody({
     required this.id,

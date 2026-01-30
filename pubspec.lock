@@ -18,7 +18,7 @@ packages:
     source: hosted
     version: "2.1.2"
   bottom_bar_matu:
-    dependency: "direct overridden"
+    dependency: "direct dev"
     description:
       name: bottom_bar_matu
       sha256: "1566e067210380b543db1a548499e57d39dd8f5ceb9eaa878d036f82d886353e"
@@ -143,7 +143,7 @@ packages:
     source: hosted
     version: "3.3.1"
   flutter_lints:
-    dependency: "direct overridden"
+    dependency: "direct dev"
     description:
       name: flutter_lints
       sha256: "3105dc8492f6183fb076ccf1f351ac3d60564bff92e20bfc4af9cc1651f4e7e1"
@@ -268,7 +268,7 @@ packages:
     source: hosted
     version: "2.0.15"
   path_provider_android:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: path_provider_android
       sha256: "95c68a74d3cab950fd0ed8073d9fab15c1c06eb1f3eec68676e87aabc9ecee5a"

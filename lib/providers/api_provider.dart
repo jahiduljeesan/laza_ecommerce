@@ -24,13 +24,9 @@ class ApiProvider extends ChangeNotifier{
 
     try {
       _products = await _apiService.getProducts();
-      debugPrint("Loaded products: ${_products.length}");
+      isLoading = false;
     } catch (e) {
       debugPrint('Error loading products: $e');
-    } finally {
-      isLoading = false;
-      notifyListeners();
-      debugPrint("Loaded productsx: ${_products.length}");
     }
   }
 
