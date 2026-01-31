@@ -28,11 +28,10 @@ class ApiProvider extends ChangeNotifier{
     } catch (e) {
       debugPrint('Error loading products: $e');
     }finally{
-
+      isLoading = false;
       notifyListeners();
     }
   }
-
 
   Future<void> loadProductById(int id) async {
     isLoading = true;

@@ -68,6 +68,7 @@ class CartProvider extends ChangeNotifier {
 
   Future<void> _syncCartInBackground() async {
     debugPrint("CartLength provider cart is syncing");
+    debugPrint("CartLength provider cart itemsLength ${cartItems.length}");
     if (!Hive.isBoxOpen('cartBox')) return;
 
     isLoading = true;

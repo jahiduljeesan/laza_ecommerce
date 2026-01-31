@@ -265,7 +265,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     );
                     context.read<CartProvider>().addItem(
-                      CartProduct(id: 1, quantity: 1)
+                      CartProduct(id: product?.id ?? 0, quantity: 1)
                     );
                   },
                 ),
