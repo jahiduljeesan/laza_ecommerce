@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:laza_ecommerce/models/cart/cart_request.dart';
 import 'package:laza_ecommerce/models/product.dart';
 import 'package:laza_ecommerce/models/review.dart';
 import 'package:laza_ecommerce/providers/api_provider.dart';
+import 'package:laza_ecommerce/providers/cart_provider.dart';
 import 'package:laza_ecommerce/screens/navigation/all_review_screen.dart';
 import 'package:laza_ecommerce/screens/navigation/cart_screen.dart';
 import 'package:laza_ecommerce/values/laza_colors.dart';
@@ -256,7 +258,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 BottomButton(
                   label: 'Add to Cart',
                   onTap: () {
-                    // Your add-to-cart logic
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Added to cart"),
+                        duration: Duration(seconds: 1),
+                      ),
+                    );
+                    context.read<CartProvider>().addItem(
+                      CartProduct(id: 1, quantity: 1)
+                    );
                   },
                 ),
               ],
