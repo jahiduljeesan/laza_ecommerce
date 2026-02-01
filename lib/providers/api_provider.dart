@@ -24,7 +24,6 @@ class ApiProvider extends ChangeNotifier{
 
     try {
       _products = await _apiService.getProducts();
-      isLoading = false;
     } catch (e) {
       debugPrint('Error loading products: $e');
     }finally{

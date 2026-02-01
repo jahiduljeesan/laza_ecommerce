@@ -1,9 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza_ecommerce/models/cart/cart_response.dart';
 
 class CartStyle extends StatefulWidget {
-  const CartStyle({super.key});
+  final CartProduct? cartItem;
+  final VoidCallback onIncrease;
+  final VoidCallback onDecrease;
+  final VoidCallback onDelete;
+
+  const CartStyle({
+    super.key,
+    required this.cartItem,
+    required this.onIncrease,
+    required this.onDecrease,
+    required this.onDelete,
+  });
 
   @override
   State<CartStyle> createState() => _CartStyleState();
@@ -39,7 +50,7 @@ class _CartStyleState extends State<CartStyle> {
             ),
             child: CachedNetworkImage(
               imageUrl:
-                  'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png',
+                  widget.cartItem?.thumbnail ?? '',
             ),
           ),
           Expanded(
@@ -50,7 +61,7 @@ class _CartStyleState extends State<CartStyle> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Mens Tie-Dye T-Shirt Nike Sportswere',
+                    widget.cartItem?.title??'Mens Tie-Dye T-Shirt Nike Sportswere',
                     maxLines: 2,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   ),
@@ -71,13 +82,13 @@ class _CartStyleState extends State<CartStyle> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             _circulerButton(
-                              onTap: () {},
+                              onTap: widget.onDecrease,
                               iconData: Icons.expand_more,
                               iconSize: 25,
                             ),
                             const SizedBox(width: 15,),
                             Text(
-                              '1',
+                              widget.cartItem?.quantity.toString()??'0',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 13,
@@ -86,14 +97,14 @@ class _CartStyleState extends State<CartStyle> {
                             ),
                             const SizedBox(width: 15,),
                             _circulerButton(
-                              onTap: () {},
+                              onTap: widget.onIncrease,
                               iconData: Icons.expand_less,
                               iconSize: 25,
                             ),
                           ],
                         ),
                         _circulerButton(
-                          onTap: () {},
+                          onTap: widget.onDelete,
                           iconData: Icons.delete_outline,
                           iconSize: 28,
                         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza_ecommerce/screens/auth/sign_in_screen.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/auth_text_field.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/bottom_button.dart';
 import 'package:laza_ecommerce/widgets/auth_widgets/remember_switch.dart';
@@ -80,7 +81,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
 
           BottomButton(
             label: 'Sign up',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=> SignInScreen() ));
+            },
           )
         ],
       ),

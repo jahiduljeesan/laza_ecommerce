@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ApiProvider()),
-        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => ApiProvider()..loadProducts()),
+        ChangeNotifierProvider(create: (_) => CartProvider()..init()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

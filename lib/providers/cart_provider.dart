@@ -8,7 +8,7 @@ class CartProvider extends ChangeNotifier {
   late Box _cartBox;
   final ApiService _apiService = ApiService();
 
-  bool isLoading = false;
+  bool isLoading = true;
   CartResponse? _cartResponse;
 
   CartResponse? get cartResponse => _cartResponse;
@@ -17,6 +17,7 @@ class CartProvider extends ChangeNotifier {
     _cartBox = await Hive.openBox('cartBox');
     debugPrint("CartLength provider initilzed");
     notifyListeners();
+    _syncCartInBackground();
   }
 
   List<CartProduct> get cartItems {

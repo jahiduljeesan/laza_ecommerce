@@ -9,89 +9,82 @@ class ProductStyle extends StatelessWidget {
   final Product? product;
   final VoidCallback onTap;
 
-  ProductStyle({super.key, required this.product,required this.onTap});
+  const ProductStyle({super.key, required this.product,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ApiProvider>(
-      builder: (context,provider,widget) {
-        return InkWell(
-          onTap: onTap,
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(15)
-                ,topRight: Radius.circular(15)
-            ),
-            child: SizedBox(
-              height: 300,
-              child: Skeletonizer(
-                enabled: provider.isLoading,
-                child: Column(
-                      children: [
-                        //Image container
-                        Stack(
-                          children:[
-                            Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey.shade200
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: SizedBox(
-                                  height: 200,
-                                  child: CachedNetworkImage(
-                                    imageUrl: product?.images.first ?? '',
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: 12,
-                              right: 12,
-                              child: Image.asset('assets/icons/ic_heart.png'),
-                            )
-                          ]
+    return InkWell(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(15)
+            ,topRight: Radius.circular(15)
+        ),
+        child: SizedBox(
+          height: 300,
+          child: Column(
+                children: [
+                  //Image container
+                  Stack(
+                    children:[
+                      Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade200
                         ),
-                        const SizedBox(height: 5,),
-                        Column(
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: SizedBox(
+                            height: 200,
+                            child: CachedNetworkImage(
+                              imageUrl: product?.images.first ?? '',
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 12,
+                        right: 12,
+                        child: Image.asset('assets/icons/ic_heart.png'),
+                      )
+                    ]
+                  ),
+                  const SizedBox(height: 5,),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
+                        child: Text(
+                          maxLines: 2,
+                            product?.title??'No title found!',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
-                              child: Text(
-                                maxLines: 2,
-                                  product?.title??'No title found!',
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500,
-                                  overflow: TextOverflow.ellipsis
-                                ),
+                            Text(
+                        '\$${product?.price.toString() ?? '0'}',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600
                               ),
                             ),
-                
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Text(
-                              '\$${product?.price.toString() ?? '0'}',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
                           ],
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
               ),
-            ),
-                //fav button
-          ),
-        );
-      }
+        ),
+            //fav button
+      ),
     );
   }
 }

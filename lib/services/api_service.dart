@@ -41,20 +41,30 @@ class ApiService {
     }
   }
 
+  Future<CartResponse> getCart(CartRequest cartRequest) async {
+    final uri = Uri.parse('https://dummyjson.com/carts/add');
 
-  Future<CartResponse> getCart(CartRequest cartRequest) async{
-    final uri = Uri.parse('$BASE_URL/carts/add');
+    final body = cartRequest.toJson();
+
+    debugPrint('REQUEST BODY: ${jsonEncode(body)}');
 
     final response = await http.post(
       uri,
-      body: jsonEncode(cartRequest.toJson())
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(body),
     );
 
-    if(response.statusCode == 200 || response.statusCode == 201) {
+    debugPrint('STATUS CODE: ${response.statusCode}');
+    debugPrint('RESPONSE BODY: ${response.body}');
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
       final data = jsonDecode(response.body);
       return CartResponse.fromJson(data);
     } else {
       throw Exception('Failed to load cart data');
     }
   }
+
 }

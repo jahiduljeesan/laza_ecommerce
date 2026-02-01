@@ -20,9 +20,11 @@ import 'drawer_screen.dart';
   }
 
   class _HomeScreenState extends State<HomeScreen> {
+
     @override
     Widget build(BuildContext context) {
-      final productProvider = Provider.of<ApiProvider>(context);
+      final productProvider = context.watch<ApiProvider>();
+      debugPrint('Is Loading: ${productProvider.isLoading}');
       return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
@@ -152,7 +154,7 @@ import 'drawer_screen.dart';
                 const SizedBox(height: 15,),
                 _categoryText(title: 'New Arrivals', products: productProvider.products),
                 const SizedBox(height: 10,),
-                Padding(
+                !productProvider.isLoading ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Skeletonizer(
                     enabled: productProvider.isLoading,
@@ -179,7 +181,7 @@ import 'drawer_screen.dart';
                       },
                     ),
                   ),
-                )
+                ) : CircularProgressIndicator(year2023: true,)
               ],
             ),
           ),
