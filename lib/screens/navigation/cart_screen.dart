@@ -19,6 +19,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -96,59 +97,75 @@ class _CartScreenState extends State<CartScreen> {
                   );
                 },
               ),
-              Container(
-                color: Colors.white,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Skeletonizer(
-                      enabled: cart.isLoading,
-                      enableSwitchAnimation: true,
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Total Price',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        spacing: size.height * .004,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Order Info',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
-                                Text(
-                                  'with VAT, SD',
-                                  style: TextStyle(fontSize: 13),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              '',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                          _subtitleRow(
+                            label: 'Subtotal',
+                            value: '${cart.cartResponse?.total.toStringAsFixed(2)} BDT',
+                          ),
+                          _subtitleRow(
+                            label: 'Discounted Total',
+                            value: '${cart.cartResponse?.discountedTotal.toStringAsFixed(2)} BDT',
+                          ),
+                          _subtitleRow(
+                            label: 'Shipping Charge',
+                            value: '${cart.cartResponse?.totalProducts} x 100 BDT',
+                          ),
+                          _subtitleRow(
+                            label: 'Subtotal',
+                            value: '${(cart.totalPrice + cart.totalItems*100).toStringAsFixed(2)} BDT',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14
+                          ),
+                        ],
                       ),
                     ),
-                    BottomButton(
-                      label: 'Add to Cart',
-                      onTap: () {
-                      },
+                  SizedBox(
+                    height: 60,
+                    child: BottomButton(
+                      label: 'Checkout',
+                      onTap: () {},
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
+
             ],
           );
         },
       ),
+    );
+  }
+
+  Row _subtitleRow({required String label,
+    required String value,
+    int fontSize = 13,FontWeight fontWeight = FontWeight.normal}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: TextStyle(fontSize: 13,fontWeight: fontWeight)
+        ,),
+        Text(value, style: TextStyle(fontSize: 13,fontWeight: fontWeight)
+          ,),
+      ],
     );
   }
 }
